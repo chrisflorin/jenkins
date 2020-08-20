@@ -20,7 +20,7 @@ pipeline {
     stages {
         stage('configure') {
             steps {
-                sh aws configure --profile $Profile $Variable $Value
+                sh 'aws configure --profile $Profile $Variable $Value'
             }
         }
     }
