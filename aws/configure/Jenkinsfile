@@ -1,0 +1,27 @@
+pipeline {
+    parameters {
+        choice (
+            name: 'Profile',
+            choices: [
+                'default'
+            ]
+        )
+        choice (
+            name: 'Variable',
+            choices: [
+                'aws_access_key_id',
+                'aws_secret_access_key'
+            ]
+        )
+        string (
+            name: 'Value'
+        )
+    }
+    stages {
+        stage('configure') {
+            steps {
+                sh aws configure --profile $Profile $Variable $Value
+            }
+        }
+    }
+}
